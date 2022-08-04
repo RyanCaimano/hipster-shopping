@@ -3,6 +3,7 @@ var shoppingCart = document.getElementsByClassName("shopping-cart")[0];
 var products = document.getElementsByClassName("products")[0];
 
 var cart = [];
+var total = 0;
 
 viewCartButton.addEventListener("click", function () {
   if (shoppingCart.classList.contains("show")) {
@@ -23,7 +24,9 @@ products.addEventListener("click", function (e) {
       price: itemPrice,
     };
     cart.push(product);
+    total += parseInt(product.price);
     renderCart();
+    renderTotal();
   }
 });
 
@@ -33,4 +36,17 @@ var renderCart = function () {
   while (cartList.hasChildNodes()) {
     cartList.removeChild(cartList.firstChild);
   }
+
+  var items = "";
+
+  for (var i = 0; i < cart.length; i++) {
+    items += "<div>" + cart[i].name + " - $" + cart[i].price + "</div>";
+  }
+
+  cartList.innerHTML = items;
+};
+
+var renderTotal = function () {
+  var totalElement = document.getElementsByClassName("total")[0];
+  totalElement.innerHTML = total;
 };
