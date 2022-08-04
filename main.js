@@ -14,9 +14,15 @@ viewCartButton.addEventListener("click", function () {
 
 products.addEventListener("click", function (e) {
   if (e.target.classList.contains("add-to-cart")) {
-    // TODO: get value of product name
-    // TODO: get value of product price
-    // TODO: built object based on name and price
-    // TODO: push object into _cart_ array
+    var itemName = e.target.closest(".item").getAttribute("data-name");
+
+    var itemPrice = e.target.closest(".item").getAttribute("data-price");
+
+    var product = {
+      name: itemName,
+      price: itemPrice,
+    };
+
+    cart.push(product);
   }
 });
