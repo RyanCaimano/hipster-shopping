@@ -22,7 +22,15 @@ products.addEventListener("click", function (e) {
       name: itemName,
       price: itemPrice,
     };
-
     cart.push(product);
+    renderCart();
   }
 });
+
+var renderCart = function () {
+  var cartList = document.getElementsByClassName("cart-list")[0];
+
+  while (cartList.hasChildNodes()) {
+    cartList.removeChild(cartList.firstChild);
+  }
+};
